@@ -11,13 +11,13 @@ It comes with easy steps to get boilerplate working.
 Clone the project
 
 ```bash
-  git clone https://gitlab.com/subhankar2/laravel-boilerplate.git
+  git clone https://github.com/codebuddy-pvt-ltd/boilerplate-laravel
 ```
 
 Go to the project directory
 
 ```bash
-  cd laravel-boilerplate
+  cd boilerplate-laravel
 ```
 
 Create .ENV file
