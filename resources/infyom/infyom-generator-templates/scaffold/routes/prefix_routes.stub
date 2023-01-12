@@ -1,0 +1,3 @@
+Route::prefix('$RAW_ROUTE_PREFIX$')->as('$RAW_ROUTE_PREFIX$.')->group(function () {
+    Route::resource('$MODEL_NAME_PLURAL_CAMEL$', $NAMESPACE_CONTROLLER$\$MODEL_NAME$Controller::class);
+});
