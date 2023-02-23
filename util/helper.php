@@ -108,3 +108,10 @@ if (!function_exists('removeFile')) {
         return Storage::disk($disk)->delete($path);
     }
 }
+
+if (!function_exists('isRequestForAPI')) {
+    function isRequestForAPI(): bool
+    {
+        return request()->is('api*');
+    }
+}

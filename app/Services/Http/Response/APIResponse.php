@@ -170,6 +170,16 @@ class APIResponse
         return self::$_instance;
     }
 
+    public static function dispatchBrowserEvent(string $eventName, $data = null): self
+    {
+        self::$response['dispatchEvents'][] = [
+            'eventName' => $eventName,
+            'data' => $data,
+        ];
+
+        return self::$_instance;
+    }
+
     public static function errors(array $errors): self
     {
         self::$response['errors'] = $errors;
@@ -177,7 +187,7 @@ class APIResponse
         return self::$_instance;
     }
 
-    public static function sendInternalServerError(\Throwable $th): JsonResponse
+    public static function sendInternalServerError(\Throwable $th, array $events = []): JsonResponse
     {
         Log::error($th);
 
@@ -185,6 +195,10 @@ class APIResponse
             ->status('error')
             ->statusCode(500)
             ->message('Error! Something went wrong.');
+
+        foreach ($events as $event) {
+            $response = $response->dispatchBrowserEvent($event['name'], $event['data'] ?? null);
+        }
 
         if (!isProductionEnv()) {
             $response = $response
