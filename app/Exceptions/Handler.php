@@ -6,6 +6,7 @@ use Throwable;
 use App\Services\Http\Response\APIResponse;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -42,14 +43,28 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $th)
     {
-        if ($request->ajax() && $th instanceof ValidationException) {
-            return APIResponse::build()
-                ->errors($th->errors())
-                ->status('error')
-                ->statusCode(422)
-                ->send();
-        } elseif ($request->ajax()) {
-            return APIResponse::sendInternalServerError($th);
-        }
+        $this->reportable(function (Throwable $e) {
+            //
+        });
+
+        $this->renderable(function (Throwable $th) {
+            $isAjax = request()->ajax() || isRequestForAPI();
+
+            if ($isAjax && $th instanceof ValidationException) {
+                return APIResponse::build()
+                    ->errors($th->errors())
+                    ->status('error')
+                    ->statusCode(422)
+                    ->send();
+            } elseif ($isAjax && $th instanceof NotFoundHttpException) {
+                return APIResponse::build()
+                    ->status('error')
+                    ->statusCode(404)
+                    ->message('Resource not found!')
+                    ->send();
+            } elseif ($isAjax) {
+                return APIResponse::sendInternalServerError($th);
+            }
+        });
     }
 }
