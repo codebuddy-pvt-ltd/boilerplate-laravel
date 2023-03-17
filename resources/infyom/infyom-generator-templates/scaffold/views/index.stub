@@ -1,31 +1,32 @@
 @extends('layouts.app')
 
+@section('title')
+{{ config('app.name') }} | $MODEL_NAME_PLURAL$
+@endsection
+
+@section('breadcrumb')
+<div class="d-flex align-items-center pl-25">
+    <ul class="breadCamp-ul-class">
+        <li>
+            <a href="#"><img alt="home" src="{{ asset('admin/assets/images/home-line.svg') }}"></a>
+        </li>
+        <li>
+            <i class="mdi mdi-chevron-right"></i>
+        </li>
+        <li>
+            $MODEL_NAME_PLURAL$
+        </li>
+    </ul>
+</div>
+@endsection
+
 @section('content')
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">$MODEL_NAME_PLURAL_HUMAN$</li>
-    </ol>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.table')
             </div>
         </div>
-        <div class="animated fadeIn">
-             @include('flash::message')
-             <div class="row">
-                 <div class="col-lg-12">
-                     <div class="card">
-                         <div class="card-header">
-                             <i class="fa fa-align-justify"></i>
-                             $MODEL_NAME_PLURAL$
-
-                         </div>
-                         <div class="card-body">
-                         </div>
-                     </div>
-                  </div>
-             </div>
-         </div>
     </div>
 @endsection
 
