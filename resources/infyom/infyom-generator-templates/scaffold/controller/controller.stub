@@ -2,10 +2,11 @@
 
 namespace $NAMESPACE_CONTROLLER$;
 
+use $NAMESPACE_DATATABLES$\$MODEL_NAME$DataTable;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Create$MODEL_NAME$Request;
-use App\Http\Requests\Update$MODEL_NAME$Request;
-use App\Models\$MODEL_NAME$;
+use $NAMESPACE_REQUEST$\Create$MODEL_NAME$Request;
+use $NAMESPACE_REQUEST$\Update$MODEL_NAME$Request;
+use $NAMESPACE_MODEL$\$MODEL_NAME$;
 use App\Services\Http\Response\APIResponse;
 use App\Services\Model\Traits\CrudService;
 use Illuminate\Http\JsonResponse;
@@ -17,9 +18,9 @@ class $MODEL_NAME$Controller extends Controller
 {
     use CrudService;
 
-    public function index(Request $request): View
+    public function index(Request $request, $MODEL_NAME$DataTable $$MODEL_NAME_CAMEL$DataTable)
     {
-        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index');
+        return $$MODEL_NAME_CAMEL$DataTable->render('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index');
     }
 
     public function create(): View
@@ -53,7 +54,7 @@ class $MODEL_NAME$Controller extends Controller
 
     public function update($MODEL_NAME$ $$MODEL_NAME_CAMEL$, Update$MODEL_NAME$Request $request): JsonResponse
     {
-        DB::transaction(function () use ($request) {
+        DB::transaction(function () use ($request, $$MODEL_NAME_CAMEL$) {
             $this->save($request->validated(), $$MODEL_NAME_CAMEL$);
         });
 
@@ -71,7 +72,7 @@ class $MODEL_NAME$Controller extends Controller
         return APIResponse::build()
             ->status('success')
             ->message('$MODEL_NAME_HUMAN$ deleted successfully!')
-            ->redirectTo(route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index'))
+            ->refreshDataTable('#' . $MODEL_NAME$DataTable::TABLE_ID)
             ->send();
     }
 }
