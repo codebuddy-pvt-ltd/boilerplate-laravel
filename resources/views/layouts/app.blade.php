@@ -173,9 +173,7 @@
 
         <div class="main-content">
             <div class="page-content mb-4">
-                <div class="container-fluid">
-                    @yield('content')
-                </div>
+                @yield('content')
             </div>
             <footer class="footer">
                 <div class="container-fluid">
