@@ -1,5 +1,23 @@
-<!-- $FIELD_NAME_TITLE$ Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
-    {!! Form::number('$FIELD_NAME$', null, ['class' => 'form-control'$SIZE$]) !!}
+<div class="mb-3 col-md-6">
+    <label for="$FIELD_NAME$" class="col-form-label">$FIELD_NAME_TITLE$</label>
+    <div class="input-group">
+        <span class="input-group-text p-0 bg-nan">
+            <select
+                class="form-select"
+                aria-label="Default select example"
+            >
+                <option selected>+ 91</option>
+                <option value="1">10</option>
+                <option value="2">20</option>
+                <option value="3">30</option>
+            </select>
+        </span>
+        <input
+            name="$FIELD_NAME$"
+            type="text"
+            class="form-control"
+            value=""
+            id="$FIELD_NAME$"
+        />
+    </div>
 </div>

@@ -1,8 +1,15 @@
-<!-- 'Boolean FIELD_NAME_TITLE$ Field' checked by default -->
-<div class="form-group col-sm-6">
-    {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
-    <label class="checkbox-inline">
-   {!! Form::checkbox('$FIELD_NAME$', 1, true) !!}
-   <!-- remove {, true} to make it unchecked by default -->
-    </label>
+<div class="mb-3 col-md-6">
+    <div class="form-check">
+        <input
+            name="$FIELD_NAME$"
+            id="$FIELD_NAME$"
+            class="form-check-input"
+            type="checkbox"
+            value="1"
+            checked
+        />
+        <label class="form-check-label" for="$FIELD_NAME$">
+            $FIELD_NAME_TITLE$
+        </label>
+    </div>
 </div>

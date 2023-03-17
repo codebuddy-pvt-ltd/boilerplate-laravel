@@ -1,3 +1,12 @@
-    <label class="radio-inline">
-        {!! Form::radio('$FIELD_NAME$', "$VALUE$", null) !!} $LABEL$
+<div class="rdo-l">
+    <input
+        class="form-check-input"
+        type="radio"
+        name="$FIELD_NAME$"
+        id="$FIELD_NAME$"
+        value="$VALUE$"
+    />
+    <label class="form-check-label" for="$FIELD_NAME$">
+        $LABEL$
     </label>
+</div>

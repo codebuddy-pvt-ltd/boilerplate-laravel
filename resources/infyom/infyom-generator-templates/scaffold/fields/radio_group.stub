@@ -1,5 +1,7 @@
-<!-- $FIELD_NAME_TITLE$ Field -->
-<div class="form-group col-sm-12">
-    {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
-$RADIO_BUTTONS$
+<div class="mb-3 col-md-6">
+    <label for="$FIELD_NAME$" class="col-form-label">$FIELD_NAME_TITLE$</label>
+    <div class="form-check d-flex align-items-center gap2">
+        $RADIO_BUTTONS$
+    </div>
 </div>
+

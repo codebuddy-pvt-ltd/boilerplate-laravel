@@ -1,9 +1,17 @@
-<!-- 'bootstrap / Toggle Switch $FIELD_NAME_TITLE$ Field' -->
-<div class="d-flex align-items-center form-group col-sm-6">
- {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
-    <label class="switch switch-label switch-pill switch-primary  ml-2">
-        {!! Form::hidden('$FIELD_NAME$', 0) !!}
-        {!! Form::checkbox('$FIELD_NAME$', 1, null,  ['class' => 'switch-input']) !!}
-        <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
-    </label>
+<div class="mb-3 col-md-6">
+    <div
+        class="form-check form-switch form-switch-lg mb-3"
+        dir="ltr"
+    >
+        <input
+            name="$FIELD_NAME$"
+            id="$FIELD_NAME$"
+            class="form-check-input"
+            type="checkbox"
+            value="1"
+        />
+        <label class="form-check-label" for="$FIELD_NAME$">
+            $FIELD_NAME_TITLE$
+        </label>
+    </div>
 </div>

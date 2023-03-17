@@ -8,6 +8,10 @@ const addQueryParamToCurrentUrlAndRefresh = (data) => {
 };
 
 $(function () {
+    if ($(".datepicker").length) {
+        $(".datepicker").datepicker();
+    }
+
     $("body").on("click", ".__btn-open-sidebar", function (e) {
         e.preventDefault();
         const target = $(this).data("target");

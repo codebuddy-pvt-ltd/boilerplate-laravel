@@ -18,7 +18,9 @@
     </div>
     <div class="container-fluid">
         <div class="wd-90 sub-from-style">
-            @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.fields')
+            <div class="row">
+                @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.fields')
+            </div>
         </div>
     </div>
 </form>
