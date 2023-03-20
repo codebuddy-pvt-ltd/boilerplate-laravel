@@ -45,7 +45,7 @@ class $MODEL_NAME$DataTable extends DataTable
             ->setTableId(self::TABLE_ID)
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['width' => '120px', 'printable' => false])
+            ->addAction(['printable' => false]) // 'width' => '120px',
             ->languageSearchPlaceholder('Search')
             ->languagePaginate([
                 'sNext' => '<i class="dripicons-chevron-right" ></i>',

@@ -1,4 +1,10 @@
 // load /public/assets/shared/js/toast.js before this file
+$.ajaxSetup({
+    headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf_token"]').attr("content"),
+    },
+});
+
 /* eslint-disable-next-line */
 class Ajax {
     constructor(url, type = "POST", data = {}, hasFormData = false) {

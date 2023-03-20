@@ -24,7 +24,15 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.table')
+                <div class="table-hidden mb-0 bordered-table table-style">
+                    <h2 class="mb-sm-3 font-bold font-size-18">$MODEL_NAME_PLURAL$</h2>
+                    <div class="right-absolute">
+                        <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.create') }}" class="btn add-space mr-2 waves-effect waves-light">
+                            Create $MODEL_NAME_HUMAN$
+                        </a>
+                    </div>
+                    @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.table')
+                </div>
             </div>
         </div>
     </div>
