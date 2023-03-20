@@ -11,8 +11,8 @@
                 <img class="rounded-circle btm-profile-user" src="{{ asset('admin/assets/images/users/avatar-1.jpg') }}"
                     alt="Header Avatar">
                 <span class="d-xl-inline-block ms-1 text-left">
-                    <h5>Amy Horsefighter</h5>
-                    <span>abc@gmail.com</span>
+                    <h5>{{ auth()->user()->name }}</h5>
+                    <span>{{ auth()->user()->email }}</span>
                 </span>
                 <i class="mdi mdi-chevron-right d-xl-inline-block"></i>
             </button>
