@@ -12,22 +12,22 @@
                     console.log("uploaded");
                     done();
                 },
-                acceptedFiles: typeof _el.data('accept') !== 'undefined' ? _el.data('accept') : '*',
                 init: function() {
                     if (!isMultiple) {
                         this.on("addedfile", function() {
                             if (this.files[1]!=null){
                                 this.removeFile(this.files[0]);
-                                $(document).find('.file-path').html('');
+                                // $(document).find('.file-path').html('');
                             }
                         });
                     }
                     $(document).find('.file-path').html('');
                 },
                 url: "{{ route('drop_zone_file_upload') }}",
+                acceptedFiles: typeof _el.data('accept') !== 'undefined' ? _el.data('accept') : '*',
                 timeout: 0,
                 parallelUploads: 10,
-                uploadMultiple: isMultiple,
+                uploadMultiple: false,
                 addRemoveLinks: false,
                 dictDefaultMessage: `<div><h6>Drag and drop to upload</h6><h6>or <a href="javascript:void(0)">browse</a> to choose a file</h6></div>`,
                 sending: function(file, xhr, formData) {
