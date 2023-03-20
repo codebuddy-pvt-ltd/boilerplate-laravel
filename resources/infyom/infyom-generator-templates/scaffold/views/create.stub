@@ -4,6 +4,10 @@
 {{ config('app.name') }} | Create $MODEL_NAME_HUMAN$
 @endsection
 
+@push('styles')
+@include('layouts.dropzone_css')
+@endpush
+
 @section('breadcrumb')
 <div class="d-flex align-items-center pl-25">
     <ul class="breadCamp-ul-class">
@@ -41,3 +45,7 @@
     </div>
 </form>
 @endsection
+
+@push('script-assets')
+@include('layouts.dropzone_js')
+@endpush

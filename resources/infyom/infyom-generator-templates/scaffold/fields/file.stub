@@ -1,33 +1,7 @@
 <div class="mb-3 col-md-6">
     <label for="$FIELD_NAME$" class="col-form-label">$FIELD_NAME_TITLE$</label>
-    <div id="file-upload-form" class="uploader dash-border">
-        <input
-            name="$FIELD_NAME$"
-            id="$FIELD_NAME$"
-            type="file"
-            accept="*"
-        />
-
-        <label
-            for="file-upload"
-            id="file-drag"
-            class="upload-media"
-        >
-            <img
-                id="file-image"
-                src="#"
-                alt="Preview"
-                class="hidden preview-img"
-            />
-            <div id="start" class="start-left-upload">
-                <h5>Drag images here or click to select files</h5>
-                <p id="notimage" class="hidden">
-                    <!-- sub text -->
-                </p>
-            </div>
-            <div id="response" class="hidden">
-                <div id="messages"></div>
-            </div>
-        </label>
+    <div id="$FIELD_NAME$" class="fallback dropzone" data-accept="*" data-name="$FIELD_NAME$">
+        <input name="$FIELD_NAME$" type="file" style="display: none;" />
     </div>
+    <div class="file-path d-none"></div>
 </div>

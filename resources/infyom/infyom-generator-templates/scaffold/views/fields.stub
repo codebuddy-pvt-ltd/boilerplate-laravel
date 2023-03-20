@@ -3,5 +3,5 @@ $FIELDS$
 <!-- Submit Field -->
 <div class="mb-4 col-sm-12">
     <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="btn btn-border">Cancel</a>
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+    <input type="submit" class="btn btn-primary" value="Save">
 </div>
