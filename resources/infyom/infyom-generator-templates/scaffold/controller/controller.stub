@@ -25,7 +25,8 @@ class $MODEL_NAME$Controller extends Controller
 
     public function create(): View
     {
-        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.create');
+        $$MODEL_NAME_CAMEL$ = new $MODEL_NAME$();
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.create', compact('$MODEL_NAME_CAMEL$'));
     }
 
     public function store(Create$MODEL_NAME$Request $request): JsonResponse

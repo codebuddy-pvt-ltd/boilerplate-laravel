@@ -11,7 +11,15 @@ class DropZoneFileUploadController
     {
         try {
             $folder = !empty($request->path) ? $request->path : 'public/uploads/media';
-            $imagePath = uploadFile($request->file('file'), $folder);
+
+            if (is_array($request->file('file'))) {
+                $imagePath = [];
+                foreach ($request->file('file') as $file) {
+                    $imagePath[] = uploadFile($file, $folder);
+                }
+            } else {
+                $imagePath = uploadFile($request->file('file'), $folder);
+            }
 
             return APIResponse::build()
                 ->status('success')

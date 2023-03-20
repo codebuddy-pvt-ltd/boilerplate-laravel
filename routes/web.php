@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Util\DropZoneFileUploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +37,6 @@ Route::post(
     'generator_builder/generate-from-file',
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
+
+Route::post('drop-zone-image-upload', DropZoneFileUploadController::class)->name('drop_zone_file_upload');
+
