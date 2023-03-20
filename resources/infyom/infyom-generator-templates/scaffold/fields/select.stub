@@ -1,4 +1,4 @@
 <div class="mb-3 col-md-6">
     <label for="$FIELD_NAME$" class="col-form-label">$FIELD_NAME_TITLE$</label>
-    {!! Form::select('$FIELD_NAME$', $INPUT_ARR$, optional($$MODEL_NAME_CAMEL$->$FIELD_NAME$), ['class' => 'form-select']) !!}
+    {!! Form::select('$FIELD_NAME$', $INPUT_ARR$, optional($$MODEL_NAME_CAMEL$->$FIELD_NAME$), ['class' => 'form-select select2']) !!}
 </div>
