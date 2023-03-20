@@ -26,8 +26,10 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong>Details</strong>
-                        <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="btn btn-border">Back</a>
+                        <div class="d-flex justify-content-space-between">
+                            <strong>Details</strong>
+                            <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="btn btn-border">Back</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
