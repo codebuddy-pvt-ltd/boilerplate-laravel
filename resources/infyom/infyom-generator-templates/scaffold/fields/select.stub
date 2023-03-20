@@ -1,4 +1,9 @@
 <div class="mb-3 col-md-6">
     <label for="$FIELD_NAME$" class="col-form-label">$FIELD_NAME_TITLE$</label>
-    {!! Form::select('$FIELD_NAME$', $INPUT_ARR$, optional($$MODEL_NAME_CAMEL$->$FIELD_NAME$), ['class' => 'form-select select2']) !!}
+    <select class="form-select select2" name="$FIELD_NAME$">
+        <option value="">Select</option>
+        @foreach ($INPUT_ARR$ as $key => $item)
+        <option {{ $key == optional($$MODEL_NAME_CAMEL$)->$FIELD_NAME$ ? 'selected' : '' }} value="{{ $key }}">{{ $item }}</option>
+        @endforeach
+    </select>
 </div>

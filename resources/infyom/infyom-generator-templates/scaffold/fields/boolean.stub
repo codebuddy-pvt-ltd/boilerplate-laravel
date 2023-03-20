@@ -6,7 +6,7 @@
             class="form-check-input"
             type="checkbox"
             value="1"
-            {{ optional($$MODEL_NAME_CAMEL$->$FIELD_NAME$) == '1' ? 'checked' : '' }}
+            {{ optional($$MODEL_NAME_CAMEL$)->$FIELD_NAME$ == '1' ? 'checked' : '' }}
         />
         <label class="form-check-label" for="$FIELD_NAME$">
             $FIELD_NAME_TITLE$

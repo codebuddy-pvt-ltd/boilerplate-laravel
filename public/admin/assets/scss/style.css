@@ -7100,3 +7100,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 .justify-content-space-between {
     justify-content: space-between;
 }
+
+.add-space {
+    z-index: 1;
+}

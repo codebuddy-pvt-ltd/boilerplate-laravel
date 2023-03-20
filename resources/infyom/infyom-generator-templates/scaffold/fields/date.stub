@@ -1,4 +1,4 @@
 <div class="mb-3 col-md-6">
     <label for="$FIELD_NAME$" class="col-form-label">$FIELD_NAME_TITLE$</label>
-    <input type="text" name="$FIELD_NAME$" value="{{ optional($$MODEL_NAME_CAMEL$->$FIELD_NAME$) }}" class="form-control datepicker" id="$FIELD_NAME$" />
+    <input type="text" name="$FIELD_NAME$" value="{{ optional($$MODEL_NAME_CAMEL$)->$FIELD_NAME$ }}" class="form-control datepicker" id="$FIELD_NAME$" />
 </div>
