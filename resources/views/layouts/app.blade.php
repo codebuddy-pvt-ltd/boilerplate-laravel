@@ -27,7 +27,7 @@
             <div class="navbar-header">
                 <div class="d-flex">
                     <div class="navbar-brand-box">
-                        <a href="#" class="logo logo-dark">
+                        <a href="{{ route('home') }}" class="logo logo-dark">
                             <span class="logo-sm">
                                 <img src="{{ asset('admin/assets/images/favicon.svg') }}" alt="" height="22">
                             </span>
@@ -36,7 +36,7 @@
                             </span>
                         </a>
 
-                        <a href="index.html" class="logo logo-light">
+                        <a href="{{ route('home') }}" class="logo logo-light">
                             <span class="logo-sm">
                                 <img src="{{ asset('admin/assets/images/favicon.svg') }}" alt="" height="22">
                             </span>

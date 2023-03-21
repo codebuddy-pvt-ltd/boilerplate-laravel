@@ -11,7 +11,7 @@
                 <img class="rounded-circle btm-profile-user" src="{{ asset('admin/assets/images/users/avatar-1.jpg') }}"
                     alt="Header Avatar">
                 <span class="d-xl-inline-block ms-1 text-left">
-                    <h5>{{ auth()->user()->name }}</h5>
+                    <h5>{{ auth()->user()->full_name }}</h5>
                     <span>{{ auth()->user()->email }}</span>
                 </span>
                 <i class="mdi mdi-chevron-right d-xl-inline-block"></i>
@@ -19,9 +19,9 @@
             <div class="dropdown-menu dropdown-menu-end text-right">
                 <a class="dropdown-item text-danger" href="javascript: document.getElementById('logout-form').submit()">
                     <span key="t-logout">Logout</span></a>
-                <form action="{{ route('logout') }}" id="logout-form" method="POST">
+                <form action="{{ route('admin.logout') }}" id="logout-form" method="POST">
                     @csrf
-                    @method('POST')
+                    @method('DELETE')
                 </form>
             </div>
         </div>
