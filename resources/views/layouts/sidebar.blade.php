@@ -17,6 +17,9 @@
                 <i class="mdi mdi-chevron-right d-xl-inline-block"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-end text-right">
+                <a class="dropdown-item" href="{{ route('admin.change-password.index') }}">
+                    <span>Change Password</span>
+                </a>
                 <a class="dropdown-item text-danger" href="javascript: document.getElementById('logout-form').submit()">
                     <span key="t-logout">Logout</span></a>
                 <form action="{{ route('admin.logout') }}" id="logout-form" method="POST">

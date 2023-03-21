@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\LogoutController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
+use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Auth\ChangePasswordController;
 
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('/', function () {
@@ -23,5 +24,6 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::middleware(['auth', 'auth.admin'])->group(function () {
         Route::delete('logout', [LogoutController::class, 'destroy'])->name('logout');
         Route::resource('dashboard', DashboardController::class)->only('index');
+        Route::resource('change-password', ChangePasswordController::class)->only(['index', 'store']);
     });
 });

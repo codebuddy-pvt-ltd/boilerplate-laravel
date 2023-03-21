@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Shared\Auth\LoginRequest;
 use App\Models\User;
 use App\Services\Http\Controllers\Traits\APIAuthenticatable;
 use App\Services\Http\Controllers\Traits\Authenticatable;
