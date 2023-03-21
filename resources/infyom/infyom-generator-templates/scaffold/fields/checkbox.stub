@@ -1,4 +1,4 @@
-<div class="form-group col-sm-6">
+<div class="mb-3 col-md-6">
     <div class="form-check">
         <input
             name="$FIELD_NAME$"

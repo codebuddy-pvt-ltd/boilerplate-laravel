@@ -1,5 +1,5 @@
 <div class="mb-3 col-md-6">
-    <div class="form-check form-switch form-switch-lg mb-3">
+    <div class="form-check form-switch form-switch-lg mb-3" dir="ltr">
         <input
             name="$FIELD_NAME$"
             id="$FIELD_NAME$"
