@@ -8,7 +8,7 @@
         <div class="dropdown d-inline-block">
             <button type="button" class="btn header-item" id="page-header-user-dropdown" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img class="rounded-circle btm-profile-user" src="{{ asset('admin/assets/images/users/avatar-1.jpg') }}"
+                <img class="rounded-circle btm-profile-user" src="{{ asset('admin/assets/images/users/user.png') }}"
                     alt="Header Avatar">
                 <span class="d-xl-inline-block ms-1 text-left">
                     <h5>{{ auth()->user()->full_name }}</h5>
