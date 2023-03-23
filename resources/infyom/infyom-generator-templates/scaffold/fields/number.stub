@@ -1,5 +1,5 @@
 <div class="mb-3 col-md-6">
-    <label for="$FIELD_NAME$" class="col-form-label">$FIELD_NAME_TITLE$</label>
+    <label for="$FIELD_NAME$">$FIELD_NAME_TITLE$</label>
     <div class="input-group">
         <span class="input-group-text p-0 bg-nan">
             <select class="form-select select2">
