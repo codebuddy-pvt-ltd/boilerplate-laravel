@@ -17,15 +17,15 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group mb-3">
-                        <label for="old_password">Old Password</label>
+                        <label for="old_password" class="required">Old Password</label>
                         <input type="password" name="old_password" class="form-control" placeholder="">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="password">New Password</label>
+                        <label for="password" class="required">New Password</label>
                         <input type="password" name="password" class="form-control" placeholder="">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="password_confirmation">New Confirm Password</label>
+                        <label for="password_confirmation" class="required">New Confirm Password</label>
                         <input type="password" name="password_confirmation" class="form-control" placeholder="">
                     </div>
                     <div class="form-group mb-3">
