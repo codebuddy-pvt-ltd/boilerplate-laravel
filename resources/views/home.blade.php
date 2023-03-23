@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+{{ config('app.name') }} | Home
+@endsection
+
 @section('content')
   <div class="container-fluid">
         <div class="animated fadeIn">

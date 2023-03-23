@@ -1,5 +1,9 @@
-<!-- $FIELD_NAME_TITLE$ Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
-    {!! Form::select('$FIELD_NAME$', $INPUT_ARR$, null, ['class' => 'form-control']) !!}
+<div class="mb-3 col-md-6">
+    <label for="$FIELD_NAME$">$FIELD_NAME_TITLE$</label>
+    <select class="form-select select2" name="$FIELD_NAME$">
+        <option value="">Select</option>
+        @foreach ($INPUT_ARR$ as $key => $item)
+        <option {{ $key == optional($$MODEL_NAME_CAMEL$)->$FIELD_NAME$ ? 'selected' : '' }} value="{{ $key }}">{{ $item }}</option>
+        @endforeach
+    </select>
 </div>

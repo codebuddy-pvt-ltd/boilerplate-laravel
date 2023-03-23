@@ -1,5 +1,4 @@
-<!-- $FIELD_NAME_TITLE$ Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
-    {!! Form::email('$FIELD_NAME$', null, ['class' => 'form-control'$SIZE$]) !!}
+<div class="mb-3 col-md-6">
+    <label for="$FIELD_NAME$">$FIELD_NAME_TITLE$</label>
+    <input type="text" name="$FIELD_NAME$" value="{{ optional($$MODEL_NAME_CAMEL$)->$FIELD_NAME$ }}" class="form-control" id="$FIELD_NAME$" />
 </div>

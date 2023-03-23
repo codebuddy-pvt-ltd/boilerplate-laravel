@@ -1,8 +1,15 @@
-<!-- $FIELD_NAME_TITLE$ Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('$FIELD_NAME$', '$FIELD_NAME_TITLE$:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('$FIELD_NAME$', 0) !!}
-        {!! Form::checkbox('$FIELD_NAME$', '$CHECKBOX_VALUE$', null) !!}
-    </label>
+<div class="mb-3 col-md-6">
+    <div class="form-check">
+        <input
+            name="$FIELD_NAME$"
+            id="$FIELD_NAME$"
+            class="form-check-input"
+            type="checkbox"
+            value="$CHECKBOX_VALUE$"
+            {{ optional($$MODEL_NAME_CAMEL$)->$FIELD_NAME$ == '$CHECKBOX_VALUE$' ? 'checked' : '' }}
+        />
+        <label class="form-check-label" for="$FIELD_NAME$">
+            $FIELD_NAME_TITLE$
+        </label>
+    </div>
 </div>

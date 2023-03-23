@@ -1,28 +1,43 @@
 @extends('layouts.app')
 
+@section('title')
+{{ config('app.name') }} | $MODEL_NAME_HUMAN$ Details
+@endsection
+
+@section('breadcrumb')
+<div class="d-flex align-items-center pl-25">
+    <ul class="breadCamp-ul-class">
+        <li>
+            <a href="#"><img alt="home" src="{{ asset('admin/assets/images/home-line.svg') }}"></a>
+        </li>
+        <li>
+            <i class="mdi mdi-chevron-right"></i>
+        </li>
+        <li>
+            $MODEL_NAME_HUMAN$ Details
+        </li>
+    </ul>
+</div>
+@endsection
+
 @section('content')
-     <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}">$MODEL_NAME_HUMAN$</a>
-            </li>
-            <li class="breadcrumb-item active">Detail</li>
-     </ol>
-     <div class="container-fluid">
-          <div class="animated fadeIn">
-                 @include('coreui-templates::common.errors')
-                 <div class="row">
-                     <div class="col-lg-12">
-                         <div class="card">
-                             <div class="card-header">
-                                 <strong>Details</strong>
-                                  <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="btn btn-light">Back</a>
-                             </div>
-                             <div class="card-body">
-                                 @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.show_fields')
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-          </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-space-between">
+                            <strong>Details</strong>
+                            <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="btn btn-border">Back</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.show_fields')
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

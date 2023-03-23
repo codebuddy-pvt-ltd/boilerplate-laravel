@@ -1,6 +1,7 @@
-<li class="nav-item {{ Request::is('$ROUTE_PREFIX$$MODEL_NAME_PLURAL_CAMEL$*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>$MODEL_NAME_PLURAL_HUMAN$</span>
+<li class="{{ Request::is('$ROUTE_PREFIX$$MODEL_NAME_PLURAL_CAMEL$*') ? 'mm-active' : '' }}">
+    <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}" class="{{ Request::is('$ROUTE_PREFIX$$MODEL_NAME_PLURAL_CAMEL$*') ? 'active' : '' }} waves-effect">
+        <img alt="$MODEL_NAME_PLURAL_HUMAN$" src="{{ asset('admin/assets/images/masters1.svg') }}" class="default-icon">
+        <img alt="$MODEL_NAME_PLURAL_HUMAN$" src="{{ asset('admin/assets/images/masters2.svg') }}" class="hover-icon">
+        <span key="t-file-invoices">$MODEL_NAME_PLURAL_HUMAN$</span>
     </a>
 </li>

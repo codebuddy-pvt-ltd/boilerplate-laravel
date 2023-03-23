@@ -1,125 +1,235 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>{{config('app.name')}}</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Bootstrap 4.1.1 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <meta charset="utf-8" />
+    <title>@yield('title')</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="{{ csrf_token() }}" name="csrf_token" />
+    <link rel="shortcut icon" href="{{ getAdminSiteFavicon($site_setting_admin_site_favicon) }}">
+    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/css/coreui.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@icon/coreui-icons-free@1.0.1-alpha.1/coreui-icons-free.css">
-
-    <!-- PRO version // if you have PRO version licence than remove comment and use it. -->
-    {{--<link rel="stylesheet" href="https://unpkg.com/@coreui/icons@1.0.0/css/brand.min.css">--}}
-    {{--<link rel="stylesheet" href="https://unpkg.com/@coreui/icons@1.0.0/css/flag.min.css">--}}
-    <!-- PRO version -->
-
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('admin/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin/assets/scss/style.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
+    @stack('styles')
+
+    <style>
+        :root {
+            --bs-primary: {{ $site_setting_admin_primary_color }} !important;
+            --bs-secondary: {{ $site_setting_admin_secondary_color }} !important;
+        }
+    </style>
 </head>
 
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-    <header class="app-header navbar">
-        <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">
-            <img class="navbar-brand-full" src="http://infyom.com/images/logo/blue_logo_150x150.jpg" width="30"
-                height="30" alt="InfyOm Logo">
-            <img class="navbar-brand-minimized" src="http://infyom.com/images/logo/blue_logo_150x150.jpg" width="30"
-                height="30" alt="InfyOm Logo">
-        </a>
-        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<body data-sidebar="dark">
+    <div id="layout-wrapper">
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <div class="navbar-brand-box">
+                        <a href="{{ route('home') }}" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="{{ getAdminSiteFavicon($site_setting_admin_site_favicon) }}" alt=""
+                                    height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="{{ getAdminSiteLogo($site_setting_admin_site_logo) }}" alt="" height="17">
+                            </span>
+                        </a>
 
-        <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item d-md-down-none">
-                <a class="nav-link" href="#">
-                    <i class="icon-bell"></i>
-                    <span class="badge badge-pill badge-danger">5</span>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
-                    aria-haspopup="true" aria-expanded="false">
-                    {{-- {{ Auth::user()->name }} --}}
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header text-center">
-                        <strong>Account</strong>
+                        <a href="{{ route('home') }}" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="{{ getAdminSiteFavicon($site_setting_admin_site_favicon) }}" alt=""
+                                    height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="{{ getAdminSiteLogo($site_setting_admin_site_logo) }}" alt="" height="19">
+                            </span>
+                        </a>
+
+                        <button type="button" class="arrow-item" id="vertical-menu-btn">
+                            <img alt="toggle-icon" src="{{ asset('admin/assets/images/arrow-left.svg') }}">
+                        </button>
                     </div>
-                    <a class="dropdown-item" href="#">
-                        <i class="fa fa-envelope-o"></i> Messages
-                        <span class="badge badge-success">42</span>
-                    </a>
-                    <div class="dropdown-header text-center">
-                        <strong>Settings</strong>
-                    </div>
-                    <a class="dropdown-item" href="#">
-                        <i class="fa fa-user"></i> Profile</a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fa fa-wrench"></i> Settings</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <i class="fa fa-shield"></i> Lock Account</a>
-                    <a href="{{ url('/logout') }}" class="dropdown-item btn btn-default btn-flat"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fa fa-lock"></i>Logout
-                    </a>
-                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+
                 </div>
-            </li>
-        </ul>
-    </header>
 
-    <div class="app-body">
-        @include('layouts.sidebar')
-        <main class="main">
-            @yield('content')
-        </main>
+                <div class="d-flex w-100 justify-content-between">
+                    @yield('breadcrumb')
+
+                    <div>
+                        {{-- <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item noti-icon waves-effect"
+                                id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                <img alt="icon" src="assets/images/bell.svg"> Notifications
+                                <!-- <span class="badge bg-danger rounded-pill">3</span> -->
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                                aria-labelledby="page-header-notifications-dropdown">
+                                <div class="p-3">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h6 class="m-0" key="t-notifications"> Notifications </h6>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="#!" class="small" key="t-view-all"> View All</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-simplebar style="max-height: 230px;">
+                                    <a href="javascript: void(0);" class="text-reset notification-item">
+                                        <div class="d-flex">
+                                            <div class="avatar-xs me-3">
+                                                <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                                    <i class="bx bx-cart"></i>
+                                                </span>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1" key="t-your-order">Your order is placed</h6>
+                                                <div class="font-size-12 text-muted">
+                                                    <p class="mb-1" key="t-grammer">If several languages coalesce the
+                                                        grammar</p>
+                                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span
+                                                            key="t-min-ago">3 min ago</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="javascript: void(0);" class="text-reset notification-item">
+                                        <div class="d-flex">
+                                            <img src="assets/images/users/avatar-3.jpg"
+                                                class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1">James Lemire</h6>
+                                                <div class="font-size-12 text-muted">
+                                                    <p class="mb-1" key="t-simplified">It will seem like simplified
+                                                        English.</p>
+                                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span
+                                                            key="t-hours-ago">1 hours
+                                                            ago</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="javascript: void(0);" class="text-reset notification-item">
+                                        <div class="d-flex">
+                                            <div class="avatar-xs me-3">
+                                                <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                    <i class="bx bx-badge-check"></i>
+                                                </span>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1" key="t-shipped">Your item is shipped</h6>
+                                                <div class="font-size-12 text-muted">
+                                                    <p class="mb-1" key="t-grammer">If several languages coalesce the
+                                                        grammar</p>
+                                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span
+                                                            key="t-min-ago">3 min ago</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="javascript: void(0);" class="text-reset notification-item">
+                                        <div class="d-flex">
+                                            <img src="assets/images/users/avatar-4.jpg"
+                                                class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1">Salena Layfield</h6>
+                                                <div class="font-size-12 text-muted">
+                                                    <p class="mb-1" key="t-occidental">As a skeptical Cambridge friend
+                                                        of mine occidental.</p>
+                                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span
+                                                            key="t-hours-ago">1 hours
+                                                            ago</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="p-2 border-top d-grid">
+                                    <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                                        <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">View
+                                            More..</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item noti-icon waves-effect">
+                                <img alt="icon" src="assets/images/message.svg"> Queries
+                            </button>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="vertical-menu">
+            @include('layouts.sidebar')
+        </div>
+
+        <div class="main-content">
+            <div class="page-content mb-4">
+                @yield('content')
+            </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            @if (!empty($site_setting_admin_footer_text))
+                            {{ $site_setting_admin_footer_text }}
+                            @else
+                            {{ config('app.name') }} {{ date('Y') }}. All copyright reserved.
+                            @endif
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
-    <footer class="app-footer">
-        <div>
-            <a href="https://infyom.com">InfyOm </a>
-            <span>&copy; 2019 InfyOmLabs.</span>
-        </div>
-        <div class="ml-auto">
-            <span>Powered by</span>
-            <a href="https://coreui.io">CoreUI</a>
-        </div>
-    </footer>
-</body>
-<!-- jQuery 3.1.1 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/js/coreui.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script src="{{ asset('assets/js/toast.js') }}"></script>
-<script src="{{ asset('assets/js/ajax.js') }}"></script>
-<script src="{{ asset('assets/js/process-form.js') }}"></script>
-<script src="{{ asset('assets/js/action-confirmation.js') }}"></script>
-<script src="{{ asset('assets/js/util.js') }}"></script>
-<script src="{{ asset('assets/js/app.js') }}"></script>
-@stack('scripts')
+    <div class="rightbar-overlay"></div>
+
+    @yield('right_sidebar')
+
+    @yield('modals')
+
+    <script src="{{ asset('admin/assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/libs/metismenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+        integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@2.1.16/dist/js/coreui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    @stack('script-assets')
+
+    <script src="{{ asset('admin/assets/js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/toast.js') }}"></script>
+    <script src="{{ asset('assets/js/ajax.js') }}"></script>
+    <script src="{{ asset('assets/js/process-form.js') }}"></script>
+    <script src="{{ asset('assets/js/action-confirmation.js') }}"></script>
+    <script src="{{ asset('assets/js/util.js') }}"></script>
+    @stack('scripts')
+</body>
 
 </html>

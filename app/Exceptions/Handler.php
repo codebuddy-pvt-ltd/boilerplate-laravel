@@ -39,13 +39,6 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
-    }
-
-    public function render($request, Throwable $th)
-    {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
 
         $this->renderable(function (Throwable $th) {
             $isAjax = request()->ajax() || isRequestForAPI();

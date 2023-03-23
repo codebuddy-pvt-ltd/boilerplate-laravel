@@ -115,3 +115,25 @@ if (!function_exists('isRequestForAPI')) {
         return request()->is('api*');
     }
 }
+
+if (!function_exists('getAdminSiteLogo')) {
+    function getAdminSiteLogo($adminSiteLogo): string
+    {
+        if (publicFileUrl($adminSiteLogo)) {
+            return publicFileUrl($adminSiteLogo);
+        } else {
+            return asset('admin/assets/images/logo.svg');
+        }
+    }
+}
+
+if (!function_exists('getAdminSiteFavicon')) {
+    function getAdminSiteFavicon($adminSiteFavicon): string
+    {
+        if (publicFileUrl($adminSiteFavicon)) {
+            return publicFileUrl($adminSiteFavicon);
+        } else {
+            return asset('admin/assets/images/favicon.svg');
+        }
+    }
+}

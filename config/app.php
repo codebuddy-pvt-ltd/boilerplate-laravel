@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\SiteSettingProvider;
+
 return [
 
     /*
@@ -166,7 +168,7 @@ return [
          * Package Service Providers...
          */
         InfyOm\GeneratorBuilder\GeneratorBuilderServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class, 
+        Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
@@ -177,6 +179,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        SiteSettingProvider::class,
 
     ],
 

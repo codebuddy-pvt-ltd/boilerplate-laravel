@@ -2,11 +2,11 @@
 
 namespace $NAMESPACE_CONTROLLER$;
 
-use App\DataTables\$MODEL_NAME$DataTable;
+use $NAMESPACE_DATATABLES$\$MODEL_NAME$DataTable;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Create$MODEL_NAME$Request;
-use App\Http\Requests\Update$MODEL_NAME$Request;
-use App\Models\$MODEL_NAME$;
+use $NAMESPACE_REQUEST$\Create$MODEL_NAME$Request;
+use $NAMESPACE_REQUEST$\Update$MODEL_NAME$Request;
+use $NAMESPACE_MODEL$\$MODEL_NAME$;
 use App\Services\Http\Response\APIResponse;
 use App\Services\Model\Traits\CrudService;
 use Illuminate\Http\JsonResponse;
@@ -25,7 +25,8 @@ class $MODEL_NAME$Controller extends Controller
 
     public function create(): View
     {
-        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.create');
+        $$MODEL_NAME_CAMEL$ = new $MODEL_NAME$();
+        return view('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.create', compact('$MODEL_NAME_CAMEL$'));
     }
 
     public function store(Create$MODEL_NAME$Request $request): JsonResponse
