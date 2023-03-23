@@ -1,12 +1,14 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.svg') }}">
-    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="{{ getAdminSiteFavicon($site_setting_admin_site_favicon) }}">
+    <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
         integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
@@ -17,6 +19,7 @@
     <link href="{{ asset('admin/assets/scss/style.css') }}" id="app-style" rel="stylesheet" type="text/css" />
     @stack('styles')
 </head>
+
 <body>
     <div class="account-pages my-5 pt-sm-5">
         <div class="container">
@@ -25,7 +28,9 @@
                     <div class="card overflow-hidden card-login">
                         <div class="card-body">
                             <div class="text-center mb-4">
-                                <div class="mb-4"><img alt="logo" src="{{ asset('admin/assets/images/favicon.svg') }}"></div>
+                                <div class="mb-4"><img alt="logo"
+                                        src="{{ getAdminSiteLogo($site_setting_admin_site_logo) }}">
+                                </div>
                                 @yield('card-title')
                             </div>
                             @yield('content')
@@ -60,4 +65,5 @@
 
     @stack('scripts')
 </body>
+
 </html>

@@ -6,7 +6,7 @@
     <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="{{ csrf_token() }}" name="csrf_token" />
-    <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.svg') }}">
+    <link rel="shortcut icon" href="{{ getAdminSiteFavicon($site_setting_admin_site_favicon) }}">
     <link href="{{ asset('admin/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
         type="text/css" />
     <link rel="stylesheet"
@@ -19,6 +19,13 @@
     <link href="{{ asset('admin/assets/scss/style.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
     @stack('styles')
+
+    <style>
+        :root {
+            --bs-primary: {{ $site_setting_admin_primary_color }} !important;
+            --bs-secondary: {{ $site_setting_admin_secondary_color }} !important;
+        }
+    </style>
 </head>
 
 <body data-sidebar="dark">
@@ -29,19 +36,21 @@
                     <div class="navbar-brand-box">
                         <a href="{{ route('home') }}" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="{{ asset('admin/assets/images/favicon.svg') }}" alt="" height="22">
+                                <img src="{{ getAdminSiteFavicon($site_setting_admin_site_favicon) }}" alt=""
+                                    height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset('admin/assets/images/mro-x.png') }}" alt="" height="17">
+                                <img src="{{ getAdminSiteLogo($site_setting_admin_site_logo) }}" alt="" height="17">
                             </span>
                         </a>
 
                         <a href="{{ route('home') }}" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="{{ asset('admin/assets/images/favicon.svg') }}" alt="" height="22">
+                                <img src="{{ getAdminSiteFavicon($site_setting_admin_site_favicon) }}" alt=""
+                                    height="22">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset('admin/assets/images/mro-x.png') }}" alt="" height="19">
+                                <img src="{{ getAdminSiteLogo($site_setting_admin_site_logo) }}" alt="" height="19">
                             </span>
                         </a>
 
@@ -179,7 +188,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
+                            @if (!empty($site_setting_admin_footer_text))
+                            {{ $site_setting_admin_footer_text }}
+                            @else
                             {{ config('app.name') }} {{ date('Y') }}. All copyright reserved.
+                            @endif
                         </div>
                         <div class="col-sm-6"></div>
                     </div>

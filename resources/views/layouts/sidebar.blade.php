@@ -17,6 +17,9 @@
                 <i class="mdi mdi-chevron-right d-xl-inline-block"></i>
             </button>
             <div class="dropdown-menu dropdown-menu-end text-right">
+                <a class="dropdown-item" href="{{ route('admin.site-settings.index') }}">
+                    <span>Site Settings</span>
+                </a>
                 <a class="dropdown-item" href="{{ route('admin.change-password.index') }}">
                     <span>Change Password</span>
                 </a>

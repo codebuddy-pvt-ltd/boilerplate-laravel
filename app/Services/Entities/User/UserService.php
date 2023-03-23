@@ -21,4 +21,9 @@ class UserService
 
         return true;
     }
+
+    public function getSuperAdminUser(): ?User
+    {
+        return User::role(config('roles.super_admin.value'))->first();
+    }
 }
