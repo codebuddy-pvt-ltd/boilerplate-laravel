@@ -7,12 +7,29 @@
         $('.dropzone').each(function () {
             const _el = $(this);
             const isMultiple = typeof _el.data('multiple') !== 'undefined' ? true : false;
+            const showFileUrl = _el.data('file-url')
             let myDropzone = new Dropzone(`#${$(this).attr('id')}`, {
                 accept: function(file, done) {
                     console.log("uploaded");
                     done();
                 },
                 init: function() {
+                    if (typeof showFileUrl !== 'undefined' && $.trim(showFileUrl) !== '') {
+                        $.ajax({
+                            type: "get",
+                            url: showFileUrl,
+                            dataType: "json",
+                            success: function (response) {
+                                $.each(response, function(key,value) {
+                                    var mockFile = { name: value.name, size: value.size };
+
+                                    myDropzone.emit("addedfile", mockFile);
+                                    myDropzone.emit("thumbnail", mockFile, value.path);
+                                    myDropzone.emit("complete", mockFile);
+                                });
+                            }
+                        });
+                    }
                     if (!isMultiple) {
                         this.on("addedfile", function() {
                             if (this.files[1]!=null){
