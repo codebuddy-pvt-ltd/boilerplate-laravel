@@ -137,3 +137,18 @@ if (!function_exists('getAdminSiteFavicon')) {
         }
     }
 }
+
+if (!function_exists('getFileSizeFromPath')) {
+    function getFileSizeFromPath(?string $path = ''): int
+    {
+        return filesize(public_path(publicFileUrl($path)));
+    }
+}
+
+if (!function_exists('getStorageUrlFromPath')) {
+    function getStorageUrlFromPath(?string $path = ''): string
+    {
+        return url(str_replace('public', 'storage', $path));
+    }
+}
+
